@@ -8,7 +8,16 @@ from .retry_decorator import retry
 
 class PostgresEngine:
 
-    def __init__(self, databaseName, user, password, host='localhost', port=5432):
+    def __init__(self, databaseName: str, user: str, password: str, host: str = 'localhost', port: int = 5432):
+        """
+        Class for accessing Postgres databases more easily.
+
+        :param databaseName (str): the name of the database to connect to
+        :param user (str): the user to log in as
+        :param password (str): password of the user
+        :param host (str): host address to connect to
+        :param port (int): port where the database is available
+        """
         self.databaseName = databaseName
         self.user = user
         self.password = password
@@ -24,7 +33,7 @@ class PostgresEngine:
             logging.exception(f'Error connecting to PostgreSQL {ex}')
             raise ex
 
-    def _get_cursor(self, isInsertionQuery):
+    def _get_cursor(self, isInsertionQuery: bool):
         if isInsertionQuery:
             self.cursor = self.connection.cursor()
         else:
@@ -42,7 +51,7 @@ class PostgresEngine:
         if self.cursor is not None:
             self._close_cursor()
 
-    def create_table(self, schema):
+    def create_table(self, schema: str):
         self._get_connection()
         self._get_cursor(isInsertionQuery=True)
         self.cursor.execute(schema)
@@ -54,7 +63,7 @@ class PostgresEngine:
         finally:
             self.close()
 
-    def create_index(self, tableName, column):
+    def create_index(self, tableName: str, column: str):
         self._get_connection()
         self._get_cursor(isInsertionQuery=True)
         indexQuery = f'CREATE INDEX IF NOT EXISTS {tableName}_{column} ON {tableName}({column});'
@@ -67,21 +76,8 @@ class PostgresEngine:
         finally:
             self.close()
 
-    def create_new_foreign_key_constraint(self, tableName, constraintName, foreignKeySQL):
-        FOREIGN_KEY_QUERY = """
-            ALTER TABLE {tableName} 
-            ADD CONSTRAINT {constraintName} {foreignKeySQL};
-        """
-        self.create_table(
-            schema=FOREIGN_KEY_QUERY.format(
-                tableName=tableName,
-                constraintName=constraintName,
-                foreignKeySQL=foreignKeySQL
-            )
-        )
-
-    @retry(numRetries=5, retryDelay=3, backoffScalingFactor=2)
-    def run_select_query(self, query, parameters=None):
+    @retry(numRetries=5, retryDelaySeconds=3, backoffScalingFactor=2)
+    def run_select_query(self, query: str, parameters: dict = None):
         self._get_connection()
         self._get_cursor(isInsertionQuery=False)
         self.cursor.execute(query, parameters)
@@ -90,8 +86,8 @@ class PostgresEngine:
         outputDataframe = pd.DataFrame(outputs)
         return outputDataframe.where(outputDataframe.notnull(), None).dropna(axis=0, how='all')
 
-    @retry(numRetries=5, retryDelay=3, backoffScalingFactor=2)
-    def run_update_query(self, query, parameters=None, returnId=True):
+    @retry(numRetries=5, retryDelaySeconds=3, backoffScalingFactor=2)
+    def run_update_query(self, query: str, parameters: dict = None, returnId: bool = True):
         self._get_connection()
         self._get_cursor(isInsertionQuery=True)
         if returnId:

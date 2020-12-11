@@ -1,22 +1,21 @@
+import logging
+
 from functools import wraps
 from time import sleep
 
 
-def retry(numRetries=5, retryDelay=3, backoffScalingFactor=2, logger=None):
+def retry(numRetries: int = 5, retryDelaySeconds: int = 3, backoffScalingFactor: int = 2):
 
     def retry_decorator(func):
         @wraps(func)
         def retry_function(*args, **kwargs):
-            numTries, currentDelay = numRetries, retryDelay
+            numTries, currentDelay = numRetries, retryDelaySeconds
             while numTries > 1:
                 try:
                     return func(*args, **kwargs)
                 except Exception as ex:
                     exceptionMessage = f'{ex}, Retrying in {currentDelay} seconds...'
-                    if logger:
-                        logger.warning(exceptionMessage)
-                    else:
-                        print(exceptionMessage)
+                    logging.warning(exceptionMessage)
                     sleep(currentDelay)
                     numTries -= 1
                     currentDelay *= backoffScalingFactor

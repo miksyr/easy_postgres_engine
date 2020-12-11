@@ -11,7 +11,7 @@ setup(
     download_url='https://github.com/miksyr/easy_postgres_engine/archive/v_01.tar.gz',
     keywords=['postgreSQL', 'postgres'],
     install_requires=[
-            'pandas==0.25.3'
+            'pandas==0.25.3',
             'psycopg2-binary==2.8.4'
       ],
     classifiers=[
