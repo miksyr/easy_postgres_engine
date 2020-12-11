@@ -3,7 +3,7 @@ import pandas as pd
 import psycopg2
 import psycopg2.extras
 
-from retry_decorator import retry
+from .retry_decorator import retry
 
 
 class PostgresEngine:
