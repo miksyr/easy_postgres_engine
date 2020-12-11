@@ -4,6 +4,11 @@ The aim of this package is to provide an easier way to interface with Postgres d
 
 It contains a single _PostgresEngine_ class that extracts some typical features that a database connector would need.  Generating connections/cursors, and wrapping select/update queries in a retry decorator.
 
+###Installation
+```pip install easy_postgres_engine```
+
+###Use
+
 You can use it like this;
 ```
 from easy_postgres_engine import PostgresEngine
