@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48262e09-0230-407c-b8a0-1867df87beaf" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/easy_postgres_engine/tests/test_postgres_engine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/easy_postgres_engine/tests/test_table_schema.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easy_postgres_engine/postgres_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/easy_postgres_engine/postgres_engine.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easy_postgres_engine/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/easy_postgres_engine/retry_decorator.py" beforeDir="false" afterPath="$PROJECT_DIR$/easy_postgres_engine/retry_decorator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/code/deeplearning" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">

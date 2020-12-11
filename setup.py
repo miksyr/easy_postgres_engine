@@ -12,7 +12,8 @@ setup(
     keywords=['postgreSQL', 'postgres'],
     install_requires=[
             'pandas==0.25.3',
-            'psycopg2-binary==2.8.4'
+            'psycopg2-binary==2.8.4',
+            'testing.postgresql==1.3.0'
       ],
     classifiers=[
         "Programming Language :: Python :: 3",
