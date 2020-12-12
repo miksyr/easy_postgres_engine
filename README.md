@@ -7,7 +7,7 @@ It contains a single _PostgresEngine_ class that extracts some typical features 
 ## Installation
 ```pip install easy_postgres_engine```
 
-## Use
+## Usage
 
 You can use it like this;
 ```
