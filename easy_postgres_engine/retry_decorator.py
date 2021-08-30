@@ -1,6 +1,5 @@
-import logging
-
 from functools import wraps
+import logging
 from time import sleep
 
 
