@@ -1,12 +1,17 @@
 import logging
 from typing import Any, Dict, Optional, Union
 
+import numpy as np
 import pandas as pd
 import psycopg2
 import psycopg2.extras
 
 from .retry_decorator import retry
-from .utils.dataframe_functions import replace_nan_with_none_in_dataframe
+
+
+def replace_nan_with_none_in_dataframe(dataframe: pd.DataFrame) -> pd.DataFrame:
+    dataframe = dataframe.where(dataframe.notnull(), None).dropna(axis=0, how="all")
+    return dataframe.replace({np.nan: None})
 
 
 class PostgresEngine:
