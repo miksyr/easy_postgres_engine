@@ -4,7 +4,6 @@ from time import sleep
 
 
 def retry(numRetries: int = 5, retryDelaySeconds: int = 3, backoffScalingFactor: int = 2):
-
     def retry_decorator(func):
         @wraps(func)
         def retry_function(*args, **kwargs):
@@ -13,11 +12,13 @@ def retry(numRetries: int = 5, retryDelaySeconds: int = 3, backoffScalingFactor:
                 try:
                     return func(*args, **kwargs)
                 except Exception as ex:
-                    exceptionMessage = f'{ex}, Retrying in {currentDelay} seconds...'
+                    exceptionMessage = f"{ex}, Retrying in {currentDelay} seconds..."
                     logging.warning(exceptionMessage)
                     sleep(currentDelay)
                     numTries -= 1
                     currentDelay *= backoffScalingFactor
             return func(*args, **kwargs)
+
         return retry_function
+
     return retry_decorator
