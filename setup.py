@@ -10,7 +10,7 @@ setup(
     url="https://github.com/miksyr/easy_postgres_engine",
     download_url="https://github.com/miksyr/easy_postgres_engine/archive/v_02.tar.gz",
     keywords=["postgreSQL", "postgres"],
-    install_requires=["pandas==1.3.2", "psycopg2-binary==2.9.1", "testing.postgresql==1.3.0"],
+    install_requires=["pandas==1.3.2", "psycopg2-binary==2.9.1", "testing.postgresql==1.3.0", "numpy==1.19.2"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
