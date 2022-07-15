@@ -106,12 +106,12 @@ class PostgresEngine:
         self._get_cursor(isInsertionQuery=True)
         if returnId:
             query = f"{query}\nRETURNING id"
-        self.cursor.execute(query, parameters)
-        if returnId:
-            insertedId = self.cursor.fetchone()[0]
-        else:
-            insertedId = None
         try:
+            self.cursor.execute(query, parameters)
+            if returnId:
+                insertedId = self.cursor.fetchone()[0]
+            else:
+                insertedId = None
             self.connection.commit()
         except Exception as ex:
             logging.exception(f"error: {ex} \nquery: {query} \nparameters: {parameters}")

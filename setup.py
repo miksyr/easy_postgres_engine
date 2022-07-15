@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="easy_postgres_engine",
     packages=["easy_postgres_engine"],
-    version="0.2.1",
+    version="0.2.4",
     description="Engine class for easier connections to postgres databases",
     author="Michael Doran",
     author_email="mikrdoran@gmail.com",
